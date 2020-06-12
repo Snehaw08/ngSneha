@@ -1,0 +1,45 @@
+<h1 align="center">Welcomes You..{{ tittle }}</h1>
+<ul>
+  <li *ngFor="let carDet of cars">
+    <p>
+      Car Model_Name ::<b>{{ carDet.name| uppercase }}</b>
+    </p>
+    <div>
+      Varient ::<i>{{ carDet.varient }}</i>
+    </div>
+    <div [style.color]="carDet.car_color">
+      Color :: <q>{{ carDet.car_color }}</q>
+    </div>
+    <div>Manufacturing Year :: {{ carDet.year }}</div>
+   <ng-container *ngIf="carDet.instock != 0; then stockVal ; else outOfStock">
+   </ng-container>
+  <ng-template #stockVal>
+   <mark>{{ carDet.inStock }}  Available in stock now...</mark>
+  </ng-template>
+  <ng-template #outOfStock>
+   <del>{{ carDet.inStock }} Out of stock...</del>
+  </ng-template>
+
+<div [ngStyle]="{
+        display: carDet.canPurch === true ? 'inline-block' : 'none'
+      }">
+  <img src="https://cdn3.iconfinder.com/data/icons/flat-actions-icons-9/792/Tick_Mark_Dark-512.png"
+    width="22" />
+</div>
+
+
+   
+    <div [ngSwitch]="carDet.country"> Countary ::
+      <img *ngSwitchCase="'South Korea'" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/200px-Flag_of_South_Korea.svg.png"
+      width="35"/>
+      <img *ngSwitchCase="'Japan'" src="https://cdn2.iconfinder.com/data/icons/world-flag-icons/256/Flag_of_Japan.png" width="25" /> 
+      <img *ngSwitchCase="'UK'"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/British_Flag_of_canton.svg/800px-British_Flag_of_canton.svg.png"
+      width="50" />  
+      <img *ngSwitchCase="'India'"
+        src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/23px-Flag_of_India.svg.png" width="24" />
+      </div>
+        <div>Prices :: {{carDet.prices |currency :'INR'}}</div>
+    <p> Square root is 144 ::{{144 | sqrt }}</p>
+  </li>
+</ul>
