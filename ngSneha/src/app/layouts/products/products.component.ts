@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
-  styles: [`.card:hover {
+  styles: [
+    `.card:hover {
   transform: scale(1.15);
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
 }
@@ -15,14 +16,14 @@ import { Component, OnInit } from '@angular/core';
   margin:30px;
 }
 .container {
-    width: 100%;
-    background: url(https://cars.tatamotors.com/images/car-dot.png);
+    width: 95%;
     
 }
 .card .card-content{
   background-color: #eee;
 }
-`],
+`,
+  ],
 })
 export class ProductsComponent implements OnInit {
   constructor() {}
@@ -41,7 +42,7 @@ export class ProductsComponent implements OnInit {
       country: 'South Korea',
       prices: 650000,
       canPurch: true,
-      thumurl: "assets/img/verna.webp"
+      thumurl: 'assets/img/verna.webp',
     },
     {
       name: 'Honda',
@@ -52,7 +53,7 @@ export class ProductsComponent implements OnInit {
       country: 'Japan',
       prices: 700000,
       canPurch: false,
-      thumurl: "assets/img/city1.jpg"
+      thumurl: 'assets/img/city1.jpg',
     },
     {
       name: 'Ford',
@@ -63,7 +64,7 @@ export class ProductsComponent implements OnInit {
       country: 'UK',
       prices: 950000,
       canPurch: true,
-      thumurl: "assets/img/ecosp.jpg"
+      thumurl: 'assets/img/ecosp.jpg',
     },
     {
       name: 'MarutiSuzuki',
@@ -74,7 +75,7 @@ export class ProductsComponent implements OnInit {
       country: 'India',
       prices: 450000,
       canPurch: true,
-      thumurl: "assets/img/baleno.jpg"
+      thumurl: 'assets/img/baleno.jpg',
     },
   ];
 }
