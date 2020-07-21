@@ -3,11 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-signin-client_id"
+      content="758178916822-m4s91fquusoeeq9ghnp5d2rdoiqvlsup.apps.googleusercontent.com"
+    />
     <title>Document</title>
+    <base href="/" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
-    <app-start></app-start>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <img src="" id="img" width="150" />
+    <div id="id"></div>
+    <div id="name"></div>
+    <div id="email"></div>
+    <p>
+      <a href="#" onclick="signOut();">Sign out</a>
+    </p>
+
+    <!-- <app-start></app-start> -->
+    <app-http-posts></app-http-posts>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log("Name: " + profile.getName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+        document.getElementById("img").src = profile.getImageUrl();
+        document.getElementById("name").innerHTML = profile.getName();
+        document.getElementById("email").innerHTML = profile.getEmail();
+        document.getElementById("id").innerHTML = profile.getId();
+      }
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+          console.log("User signed out.");
+        });
+      }
+    </script>
   </body>
 </html>
-

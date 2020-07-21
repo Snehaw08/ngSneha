@@ -4,7 +4,13 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-contact-us',
 
   templateUrl: './contact-us.component.html',
-  styles: [],
+  styles: [
+
+    `
+  
+
+    `,
+  ],
 })
 export class ContactUsComponent implements OnInit {
   constructor() {}
